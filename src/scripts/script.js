@@ -1,57 +1,101 @@
 const questions = [
   {
-    question: "What is the primary enemy of the Imperium of Man??",
-    answers: ["Orks", "Eldar", "Tyranids", "Chaos"],
-    correct: "Chaos",
+    question: "Who is worshipped as the Omnissiah by the Adeptus Mechanicus?",
+    answers: [
+      "The Emperor of Mankind",
+      "The Fabricator General",
+      "The Machine God",
+      "The Void Dragon",
+    ],
+    correct: "The Machine God",
   },
   {
-    question: "Which organization serves as the secret police of the Imperium?",
+    question: "What is the primary homeworld of the Adeptus Mechanicus?",
+    answers: ["Terra", "Cadia", "Mars", "Catachan"],
+    correct: "Mars",
+  },
+  {
+    question: "What is an STC, and why is it important to the Mechanicus?",
     answers: [
-      "Adeptus Arbites",
+      "A Standard Template Construct, containing ancient technology blueprints",
+      "A Synthetic Technology Core, powering servitors",
+      "A Sacred Text of the Cult Mechanicus",
+      "A Stealth Tech Console for covert operations",
+    ],
+    correct: "A Standard Template Construct, containing ancient technology blueprints",
+  },
+  {
+    question: "Which of the following best describes a 'Tech-Priest'?",
+    answers: [
+      "A warrior specialized in anti-psyker warfare",
+      "An Imperial Guard officer responsible for heavy weaponry",
+      "A member of the Adeptus Mechanicus trained in machine rites",
+      "A scribe who maintains records for the Administratum",
+    ],
+    correct: "A member of the Adeptus Mechanicus trained in machine rites",
+  },
+  {
+    question: "What is the role of the Fabricator General?",
+    answers: [
+      "To command the forces of the Astra Militarum",
+      "To lead the Adeptus Mechanicus",
+      "To train Space Marines",
+      "To enforce the Imperial Creed",
+    ],
+    correct: "To lead the Adeptus Mechanicus",
+  },
+  {
+    question: "What is sacred to the followers of the Cult Mechanicus?",
+    answers: [
+      "Knowledge and technology",
+      "Faith and piety",
+      "Physical strength",
+      "Psychic abilities",
+    ],
+    correct: "Knowledge and technology",
+  },
+  {
+    question: "Which of these is a common weapon used by Tech-Priests?",
+    answers: [
+      "Chainsword",
+      "Power Axe",
+      "Lasgun",
+      "Omnissian Axe",
+    ],
+    correct: "Omnissian Axe",
+  },
+  {
+    question: "Which type of unit is often controlled by the Adeptus Mechanicus to perform labor and combat tasks?",
+    answers: [
+      "Servitors",
+      "Guardsmen",
+      "Necrons",
+      "Astartes",
+    ],
+    correct: "Servitors",
+  },
+  {
+    question: "What does the Rite of Maintenance involve?",
+    answers: [
+      "Praying to the Emperor",
+      "Conducting repairs on machinery with sacred rituals",
+      "Formulating new technology blueprints",
+      "Engaging in combat exercises",
+    ],
+    correct: "Conducting repairs on machinery with sacred rituals",
+  },
+  {
+    question: "The Adeptus Mechanicus works closely with which branch of the Imperium for battlefield logistics and war machinery?",
+    answers: [
       "Adeptus Custodes",
       "Inquisition",
-      "Officio Assassinorum",
+      "Astra Militarum",
+      "Ecclesiarchy",
     ],
-    correct: "Inquisition",
-  },
-  {
-    question:
-      "What is the homeworld of the Space Marines' Ultramarines chapter?",
-    answers: ["Terra", "Mars", "Macragge", "Baal"],
-    correct: "Macragge",
-  },
-  {
-    question: "Who is the leader of the Necron forces?",
-    answers: [
-      "The Silent King",
-      "The Nightbringer",
-      "The Deceiver",
-      "The Outsider",
-    ],
-    correct: "The Silent King",
-  },
-  {
-    question: "What material powers the weapons of the Adeptus Mechanicus?",
-    answers: ["Promethium", "Plasma", "Adamantium", "STC"],
-    correct: "Plasma",
-  },
-  {
-    question:
-      "Which faction is known for their psychic powers and pursuit of knowledge?",
-    answers: ["Aeldari", "Tau", "Necron", "Tyranids"],
-    correct: "Aeldari",
-  },
-  {
-    question: "Which chapter is known as the 'Angels of Death'?",
-    answers: ["Ultramarines", "Blood Angels", "Dark Angels", "Space Wolves"],
-    correct: "Blood Angels",
-  },
-  {
-    question: "What is the primary motivation of the Ork race?",
-    answers: ["Conquest", "Knowledge", "Fun and Fighting", "Honor"],
-    correct: "Fun and Fighting",
+    correct: "Astra Militarum",
   },
 ];
+
 
 let currentQuestion = 0;
 let correctAnswers = 0;
@@ -65,6 +109,10 @@ const startQuiz = () => {
   createQuestionElement(currentQuestion);
   const header = document.querySelector(".header");
   header.style.display = "none";
+
+  const quiz = document.querySelector(".quiz");
+  quiz.style.display = "block";
+  
 };
 
 const createQuestionElement = (index) => {
@@ -77,16 +125,15 @@ const createQuestionElement = (index) => {
   const answers = questions[index].answers;
 
   answers.forEach((answer) => {
-    answerForm.appendChild(createInputElement("quiz_input", "radio", "answer", answer, answer));
-    answerForm.appendChild(createLabelElement("quiz__label", answer, answer));
+    const inputField = createInputElement("quiz__input", "radio", "answer", answer, answer);
+    answerForm.appendChild(inputField);
+
+    const label = createLabelElement("quiz__label", answer, answer);
+    answerForm.appendChild(label);
   });
 
-  const submitButton = document.createElement("button");
-  submitButton.className = "question-box__submit";
-  submitButton.innerText = "Submit";
-  submitButton.setAttribute("type", "button");
-  submitButton.addEventListener("click", (event) => submitAnswer(event));
-  answerForm.appendChild(createButtonElement("question-box__submit", "button", "Submit", "click", submitAnswer));
+  const submitButton = createButtonElement("quiz__button quiz__button--submit", "button", "Submit", "click", submitAnswer)
+  answerForm.appendChild(submitButton);
 };
 
 const createInputElement = (className, type, name, value, id) => {
@@ -149,7 +196,7 @@ const submitAnswer = (event) => {
 };
 
 const endQuiz = () => {
-  const quiz = document.querySelector(".main");
+  const quiz = document.querySelector(".quiz");
 
   const results = document.createElement("section");
   results.className = "results";
@@ -159,11 +206,7 @@ const endQuiz = () => {
   resultsHeader.innerText = `Correct Answers: ${correctAnswers} | Wrong Answers: ${wrongAnswers}`;
   results.appendChild(resultsHeader);
 
-  const resetButton = document.createElement("button");
-  resetButton.className = "results__reset";
-  resetButton.innerText = "Reset";
-  resetButton.setAttribute("type", "button");
-  resetButton.addEventListener("click", resetQuiz);
+  const resetButton = createButtonElement("quiz__button quiz__button--reset", "button", "Reset Quiz", "click", resetQuiz);
   results.appendChild(resetButton);
 
   quizOver = true;
