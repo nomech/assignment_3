@@ -20,7 +20,7 @@
     quizIntro.style.display = "none";
 
     const quiz = document.querySelector(".quiz");
-    quiz.style.display = "block";
+    quiz.style.display = "flex";
   };
 
   //  Function to create the question element
@@ -41,7 +41,7 @@
         "quiz__input",
         "radio",
         "answer",
-        answer,
+        index,
         answer
       );
       //  Appending the input field to the form
@@ -116,6 +116,10 @@
       'input[name="answer"]:checked'
     ).value;
 
+    questions[currentQuestion].userAnswer = parseInt(selectedAnswer);
+
+    console.log(questions);
+
     //  Checking if the selected answer is correct
     if (selectedAnswer === questions[currentQuestion].correct) {
       //  Incrementing the correct answers
@@ -125,6 +129,7 @@
       wrongAnswers++;
     }
 
+    console.log(correctAnswers, wrongAnswers);
     //  Incrementing the current question
     currentQuestion++;
 
@@ -144,6 +149,14 @@
 
   //  Function to end the quiz
   const endQuiz = () => {
+    //  Clearing the question box and the form
+    const quizQuestionBox = document.querySelector(".quiz__question-box");
+    quizQuestionBox.style.display = "none";
+    
+    //
+    const quizForm = document.querySelector(".quiz__form");
+    //quizForm.style.display = "none";
+
     //  Creating the results section
     const quiz = document.querySelector(".quiz");
     const results = document.createElement("section");
@@ -195,6 +208,9 @@
     correctAnswers = 0;
     wrongAnswers = 0;
     quizOver = false;
+
+    const questionBox = document.querySelector(".quiz__question-box");
+    questionBox.style.display = "block";
 
     //  Creating the first question
     createQuestionElement(currentQuestion);

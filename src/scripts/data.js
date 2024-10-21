@@ -33,7 +33,8 @@ export const questions = [
       "The High Lord of Terra",
       "The Warmaster",
     ],
-    correct: "The Emperor of Mankind",
+    correct: 0,
+    userAnswer: null,
   },
   {
     question:
@@ -44,7 +45,8 @@ export const questions = [
       "Inquisition",
       "Astra Militarum",
     ],
-    correct: "Inquisition",
+    correct: 2,
+    userAnswer: null,
   },
   {
     question: "What is the purpose of the Astronomican?",
@@ -54,7 +56,8 @@ export const questions = [
       "To monitor the Imperium's resources",
       "To coordinate battles on Terra",
     ],
-    correct: "To provide a psychic beacon for Imperial ships in the warp",
+    correct: 1,
+    userAnswer: null,
   },
   {
     question: "What is the Adeptus Mechanicus primarily known for?",
@@ -64,7 +67,8 @@ export const questions = [
       "Training Imperial Psykers",
       "Protecting the Emperor on Terra",
     ],
-    correct: "Maintaining and developing Imperial technology",
+    correct: 0,
+    userAnswer: null,
   },
   {
     question: "What is an STC, and why is it significant?",
@@ -74,13 +78,14 @@ export const questions = [
       "A Standard Template Construct, containing ancient technology blueprints",
       "A Shielded Tactical Chassis for Space Marines",
     ],
-    correct:
-      "A Standard Template Construct, containing ancient technology blueprints",
+    correct:  2,
+    userAnswer: null,
   },
   {
     question: "Which world is the home of the Adeptus Mechanicus?",
     answers: ["Terra", "Mars", "Cadia", "Fenris"],
-    correct: "Mars",
+    correct: 1,
+    userAnswer: null,
   },
   {
     question: "What is the primary goal of the Orks in the galaxy?",
@@ -90,7 +95,8 @@ export const questions = [
       "To have fun and engage in combat",
       "To eradicate the Eldar",
     ],
-    correct: "To have fun and engage in combat",
+    correct: 2,
+    userAnswer: null,
   },
   {
     question:
@@ -101,7 +107,8 @@ export const questions = [
       "Necrons",
       "Chaos Space Marines",
     ],
-    correct: "Aeldari (Eldar)",
+    correct: 1,
+    userAnswer: null,
   },
   {
     question: "Who protects the Emperor in the Imperial Palace?",
@@ -111,7 +118,8 @@ export const questions = [
       "Astra Militarum",
       "Inquisition",
     ],
-    correct: "Adeptus Custodes",
+    correct: 1,
+    userAnswer: null,
   },
   {
     question: "What is the Adeptus Astartes also known as?",
@@ -121,7 +129,8 @@ export const questions = [
       "The Space Marines",
       "The Schola Progenium",
     ],
-    correct: "The Space Marines",
+    correct: 2,
+    userAnswer: null,
   },
   {
     question: "What is the primary function of the Ecclesiarchy?",
@@ -131,7 +140,8 @@ export const questions = [
       "To train Tech-Priests",
       "To protect the Emperor on Terra",
     ],
-    correct: "To enforce the worship of the Emperor across the Imperium",
+    correct: 1,
+    userAnswer: null,
   },
   {
     question: "What is the Black Library, and who guards it?",
@@ -141,7 +151,8 @@ export const questions = [
       "The training center for Imperial Assassins, guarded by the Officio Assassinorum",
       "A hall of sacred relics, guarded by the Adeptus Custodes",
     ],
-    correct: "A repository of psychic knowledge, guarded by the Harlequins",
+    correct: 0,
+    userAnswer: null,
   },
 ];
 
