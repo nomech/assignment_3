@@ -1,83 +1,80 @@
-let servitor = document.querySelector(".servitor");
-let connectButton = document.querySelector(".connect-button");
+//  Importing the connectTexts array from the data.js file
+import { connectTexts } from "./data.js";
+
+//  Initializing variables
+let connectText = document.querySelector(".connect__text");
+let connectButton = document.querySelector(".connect__button");
 let msgCount = 0;
 
-const connectTexts = [
-  { Text: "Establishing data-link .........", delay: 0 },
-  { Text: "Signal received. Calibrating .........", delay: 40 },
-  { Text: "Calibrating .........", delay: 100 },
-  { Text: "Data protocols aligned!", delay: 130 },
-  { Text: "Uplink stabilizing .........", delay: 170 },
-  { Text: "Uplink stabilized.", delay: 200 },
-  { Text: "Connection established!", delay: 230 },
-  { Text: "Establishing secure encryption cipher .........", delay: 270 },
-  {
-    Text: "Cipher confirmed. Proceeding with verification .........",
-    delay: 300,
-  },
-  { Text: "Authorization in progress .........", delay: 330 },
-  { Text: "Verifying identity markers .........", delay: 370 },
-  { Text: "Gene-code and clearance level detected .........", delay: 400 },
-  { Text: "Identity confirmed. Sanctity of protocol preserved!", delay: 1150 },
-  { Text: "Authorization complete!", delay:1200 },
-  {
-    Text: "Access granted to mission briefing. Loading data .........",
-    delay: 1600,
-  },
-  { Text: "Data fully retrieved!", delay: 2200 },
-];
-
+//  Function to construct the message element
 const constructMessageElement = (message) => {
   let messageElement = document.createElement("p");
   messageElement.innerText = message;
-  messageElement.classList.add("flash");
+  messageElement.classList.add("connect__text-line");
 
+  //  Removing the last class from the last message element
   if (
-    servitor.lastElementChild &&
-    servitor.lastElementChild.classList.contains("flash")
+    connectText.lastElementChild &&
+    connectText.lastElementChild.classList.contains("connect__text-line")
   ) {
-    servitor.lastElementChild.classList.remove("flash");
+    connectText.lastElementChild.classList.remove("connect__text-line");
   }
 
-  servitor.appendChild(messageElement);
+  //  Appending the message element to the connect text
+  connectText.appendChild(messageElement);
   return messageElement;
 };
 
+//  Function to construct the open channel message element
 const constructOpenChannel = () => {
+  //  Creating the open channel message element
   let openChannel = document.createElement("p");
-  openChannel.innerText = "By the will of the Omnissiah, the channel is open!";
-  openChannel.classList.add("open-channel");
-  openChannel.classList.add("last");
-  servitor.innerHTML = openChannel.outerHTML;
-  console.log("redirect! in 4");
+  openChannel.innerText = "Secure channel successfully established! The Emperor Protects!";
+  openChannel.classList.add("connect__text-line");
+  openChannel.classList.add("connect__text-line--last");
+  connectText.innerHTML = openChannel.outerHTML;
+
+  //  Redirecting to the quiz page
   redirect();
   return openChannel;
 };
 
+
+//  Function to create a message element with a delay
 const messageTimeout = (message, time) => {
+  //  Setting a timeout to construct the message element
   setTimeout(() => {
+    //  Constructing the message element
     constructMessageElement(message);
+
+    //  Incrementing the message count
     msgCount++;
+    //  Checking if all messages have been displayed
     if (msgCount === connectTexts.length) {
+      //  Constructing the open channel message element
       constructOpenChannel();
     }
   }, time);
 };
 
+//  Function to handle the connection process
 const connect = () => {
+  //  Adding the connecting class to the connect button
   connectButton.classList.add("connecting");
+
+  //  Iterating through the connect texts
   connectTexts.forEach((message) => {
     messageTimeout(message.Text, message.delay);
   });
 };
 
+//  Function to redirect to the quiz page
 const redirect = () => {
-  console.log("Redirecting to index.html");
+  //  Setting a timeout to redirect to the quiz page
   setTimeout(() => {
     window.location.href = "pages/quiz.html";
-
-
-  }, 4000);
+  }, 1500);
 };
 
+//  Adding an event listener to the connect button
 connectButton.addEventListener("click", connect);

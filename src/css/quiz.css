@@ -49,6 +49,22 @@ body::before {
   z-index: -1;
 }
 
+.main {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+footer {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 48px;
+  align-items: center;
+}
+
+
 .quiz {
 
   display: flex;
