@@ -1,6 +1,12 @@
+@font-face {
+    font-family: 'terminus';
+    src: url('../assets/fonts/terminus/TerminessNerdFont-Regular.ttf') format('truetype');
+}
+
+
 * {
     margin: 0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'terminus', Courier, monospace;
 }
 
 .connect {

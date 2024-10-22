@@ -5,7 +5,6 @@
   let currentQuestion = 0;
   let correctAnswers = 0;
   let wrongAnswers = 0;
-  let quizOver = false;
 
   //  Event listener for the start button
   const startButton = document.querySelector(".button--start");
@@ -26,13 +25,11 @@
   //  Function to create the question element
   const createQuestionElement = (index) => {
     //  Update progress tracker
-    proegressTracker();
+    updateProgressTracker();
 
     //  Creating the question element
-    const questionBox = document.querySelector(".quiz__question-box");
     const question = document.querySelector(".quiz__question");
-    question.innerText = questions[index].question;
-    questionBox.appendChild(question);
+    question.innerText = questions[index].question; 
 
     //  Creating the answer element
     const answerForm = document.querySelector(".quiz__form");
@@ -115,18 +112,17 @@
     event.preventDefault();
 
     //  Getting the selected answer
-    const questionBox = document.querySelector(".quiz__question");
     const quizForm = document.querySelector(".quiz__form");
-    const selectedAnswer = document.querySelector(
+    const selectedAnswer = parseInt(document.querySelector(
       'input[name="answer"]:checked'
-    ).value;
+    ).value);
 
-    questions[currentQuestion].userAnswer = parseInt(selectedAnswer);
+    const correctAnswer = questions[currentQuestion].correct;
+    questions[currentQuestion].userAnswer = selectedAnswer;
 
-    console.log(questions);
-
+    console.log(correctAnswer, selectedAnswer);
     //  Checking if the selected answer is correct
-    if (selectedAnswer === questions[currentQuestion].correct) {
+    if (selectedAnswer === correctAnswer) {
       //  Incrementing the correct answers
       correctAnswers++;
     } else {
@@ -139,7 +135,6 @@
     currentQuestion++;
 
     //  Clearing the question box and the form
-    clearElement(questionBox);
     clearElement(quizForm);
 
     //  Checking if there are more questions
@@ -158,10 +153,6 @@
     const quizQuestionBox = document.querySelector(".quiz__question-box");
     quizQuestionBox.style.display = "none";
     
-    //
-    const quizForm = document.querySelector(".quiz__form");
-    //quizForm.style.display = "none";
-
     //  Creating the results section
     const quiz = document.querySelector(".quiz");
     const results = document.createElement("section");
@@ -199,7 +190,7 @@
     results.appendChild(resetButton);
 
     //  Setting the quiz as over
-    quizOver = true;
+
   };
 
   //  Function to reset the quiz
@@ -212,7 +203,7 @@
     currentQuestion = 0;
     correctAnswers = 0;
     wrongAnswers = 0;
-    quizOver = false;
+
 
     const questionBox = document.querySelector(".quiz__question-box");
     questionBox.style.display = "block";
@@ -222,7 +213,7 @@
   };
 
   //  Function to update the progress tracker
-  const proegressTracker = () => {
+  const updateProgressTracker = () => {
     //  Updating the progress tracker
     const progress = document.querySelector(".quiz__progress");
     progress.innerText = `Question ${currentQuestion + 1} / ${questions.length}`;
