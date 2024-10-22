@@ -2,13 +2,13 @@
 import { connectTexts } from "./data.js";
 
 //  Initializing variables
-let connectText = document.querySelector(".connect__text");
-let connectButton = document.querySelector(".connect__button");
+const connectText = document.querySelector(".connect__text");
+const connectButton = document.querySelector(".connect__button");
 let msgCount = 0;
 
 //  Function to construct the message element
 const constructMessageElement = (message) => {
-  let messageElement = document.createElement("p");
+  const messageElement = document.createElement("p");
   messageElement.innerText = message;
   messageElement.classList.add("connect__text-line");
 
@@ -28,7 +28,7 @@ const constructMessageElement = (message) => {
 //  Function to construct the open channel message element
 const constructOpenChannel = () => {
   //  Creating the open channel message element
-  let openChannel = document.createElement("p");
+  const openChannel = document.createElement("p");
   openChannel.innerText = "Secure channel successfully established! The Emperor Protects!";
   openChannel.classList.add("connect__text-line");
   openChannel.classList.add("connect__text-line--last");

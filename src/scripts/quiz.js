@@ -8,13 +8,13 @@
   let quizOver = false;
 
   //  Event listener for the start button
-  let startButton = document.querySelector(".button--start");
+  const startButton = document.querySelector(".button--start");
   startButton.addEventListener("click", () => startQuiz());
 
   //  Function to start the quiz
   const startQuiz = () => {
     createQuestionElement(currentQuestion);
-
+    
     //  Hiding the quiz intro and displaying the quiz
     const quizIntro = document.querySelector(".quiz__intro");
     quizIntro.style.display = "none";
@@ -25,6 +25,9 @@
 
   //  Function to create the question element
   const createQuestionElement = (index) => {
+    //  Update progress tracker
+    proegressTracker();
+
     //  Creating the question element
     const questionBox = document.querySelector(".quiz__question-box");
     const question = document.querySelector(".quiz__question");
@@ -52,11 +55,13 @@
       answerForm.appendChild(label);
     });
 
+    const buttonLabel = currentQuestion === questions.length - 1 ? "Submit" : "Next";
+
     //  Creating the submit button
     const submitButton = createButtonElement(
       "button button--submit",
       "button",
-      "Submit",
+      buttonLabel,
       "click",
       submitAnswer
     );
@@ -215,3 +220,10 @@
     //  Creating the first question
     createQuestionElement(currentQuestion);
   };
+
+  //  Function to update the progress tracker
+  const proegressTracker = () => {
+    //  Updating the progress tracker
+    const progress = document.querySelector(".quiz__progress");
+    progress.innerText = `Question ${currentQuestion + 1} / ${questions.length}`;
+  }
