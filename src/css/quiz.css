@@ -22,11 +22,10 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Courier New", Courier, monospace;
-  color: rgba(0, 255, 34, 0.404);
+  color: rgba(0, 255, 34, 0.60);
   font-family: 'terminus', Courier, monospace;
 }
 
-html,
 body {
   height: 100vh;
 }
@@ -59,7 +58,7 @@ body::before {
   align-items: center;
 }
 
-footer {
+.quiz-footer {
   background-color: black;
   width: 100%;
   display: flex;
@@ -86,10 +85,6 @@ footer {
   gap: 28px;
 }
 
-.quiz__question-box {
-  height: 60px;
-}
-
 .quiz__form {
   display: grid;
   grid-template-columns: 12px 1fr;
@@ -109,18 +104,50 @@ footer {
 }
 
 .button {
-  background-color: var(--accent-color-yellow);
-  color: var(--primary-color-black);
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.button--submit {
   grid-column: span 2;
   justify-self: center;
   margin-top: 28px;
+  padding: 1rem;  
+  background-color: rgb(40, 44, 38);
+  font-size:24px;
+  font-weight: 800;
+  color: rgb(119, 119, 119);
+  border: 2px solid rgb(197, 197, 197);
+  outline: none;
+  box-shadow: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(60, 66, 57);
+  color: rgb(197, 197, 197);
+}
+
+.button--next {
+  padding: 0.5rem 1rem;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review__correct-answer
+{
+  color: rgb(0 255 34 / 90%)
+}
+
+.review__user-answer {
+  color: rgb(255 230 0 / 80%);
+}
+
+.results__button-group{
+  display: flex;
+  gap: 64px;
+}
+.hide {
+  display: none;  
+  
 }

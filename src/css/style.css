@@ -1,69 +1,71 @@
 @font-face {
-    font-family: 'terminus';
-    src: url('../assets/fonts/terminus/TerminessNerdFont-Regular.ttf') format('truetype');
+  font-family: "terminus";
+  src: url("../assets/fonts/terminus/TerminessNerdFont-Regular.ttf")
+    format("truetype");
 }
 
-
 * {
-    margin: 0;
-    font-family: 'terminus', Courier, monospace;
+  margin: 0;
+  font-family: "terminus", Courier, monospace;
 }
 
 .connect {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-    height: 100vh;
-    background-color: rgb(10, 12, 9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  height: 100vh;
+  background-color: rgb(10, 12, 9);
 }
 
-
-.connect__button{
-    padding: 1rem 2rem;
-    background-color: rgb(40, 44, 38);
-    font-size: 32px;
-    font-weight: 800;
-    color: rgb(119, 119, 119);
-    border: 2px solid rgb(119, 119, 119);
-    outline: none;
-    box-shadow: none;
-    border-radius: 4px;
-    cursor: pointer;
+.connect__button {
+  padding: 1rem 2rem;
+  background-color: rgb(40, 44, 38);
+  font-size: 32px;
+  font-weight: 800;
+  color: rgb(119, 119, 119);
+  border: 2px solid rgb(119, 119, 119);
+  outline: none;
+  box-shadow: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .connect__button:hover {
-    background-color: rgb(60, 66, 57);
-    font-size: 32px;
-    font-weight: 800;
-    color:  rgb(197, 197, 197);
-    border: 2px solid rgb(197, 197, 197);
+  background-color: rgb(60, 66, 57);
+  color: rgb(197, 197, 197);
+  border: 2px solid rgb(197, 197, 197);
 }
 
-.connecting{
-    display: none;
+.connecting {
+  display: none;
 }
 
 .connect__text {
-    display: flex;
-    flex-direction: column;
-    color: rgba(0, 255, 34, 0.404);
-    font-size: 24px;
-    width: 900px;
-    
+  display: flex;
+  flex-direction: column;
+  color: rgba(0, 255, 34, 0.404);
+  font-size: 24px;
+  width: 900px;
 }
 
 .connect__text-line {
-    animation: flash 1s infinite;
+  animation: flash 1s infinite;
 }
 
-.connect__text-line--last
-{
-    animation: flash 0.4s 3;
+.connect__text-line--last {
+  animation: flash 0.4s 3;
 }
+
 
 @keyframes flash {
-    0% { color: rgba(0, 255, 34, 0.404); }
-    50% { color: rgb(0, 199, 0); }
-    100% { color: rgba(0, 255, 34, 0.404); }
+  0% {
+    color: rgba(0, 255, 34, 0.404);
   }
+  50% {
+    color: rgb(0, 199, 0);
+  }
+  100% {
+    color: rgba(0, 255, 34, 0.404);
+  }
+}
