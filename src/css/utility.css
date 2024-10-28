@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "terminus";
+    src: url("../assets/fonts/terminus/TerminessNerdFont-Regular.ttf") format("truetype");
+  }
+  
+  :root {
+    /* Primary Colors */
+    --primary-color-black: rgba(0, 0, 0, 1);
+    --primary-quiz-bg: rgba(40, 44, 38, 1);
+    --primary-green: rgba(0, 255, 34, 0.6);
+    --button-color: rgba(40, 44, 38, 1);
+    --correct-color: rgba(0, 255, 34, 1);
+    --user-answer-color: rgba(255, 230, 0, 0.8);
+    --black-radial-gradient: radial-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 1));
+  
+    /* Secondary Colors */
+    --secondary-color-white: rgba(255, 255, 255, 1);
+    --secondary-color-silver: rgba(119, 119, 119, 1);
+    --button-hover: rgba(60, 66, 57, 1);
+  
+    /* Accent Colors */
+    --accent-color-bronze: rgba(184, 115, 51, 1);
+    --accent-color-green: rgba(0, 150, 57, 1);
+    --accent-color-yellow: rgba(255, 215, 0, 1);
+    --button-border: rgba(197, 197, 197, 1);
+  
+    /* New Variables */
+    --connect-bg-color: rgba(10, 12, 9, 1);
+    --connect-text-color: rgba(0, 255, 34, 0.404);
+    --flash-mid-color: rgba(0, 199, 0, 1);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--primary-green);
+    font-family: "terminus", Courier, monospace;
+  }
+  
+
+ 
+
+  .unset-height {
+    height: unset;
+  }
