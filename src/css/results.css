@@ -1,0 +1,11 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.results__button-group {
+  display: flex;
+  gap: 64px;
+}

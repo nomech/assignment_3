@@ -1,0 +1,15 @@
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.review__question {
+  border-bottom: 1px solid;
+}
+.review__correct-answer {
+  color: var(--correct-color);
+}
+
+.review__user-answer {
+  color: var(--user-answer-color);
+}

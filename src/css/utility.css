@@ -38,3 +38,10 @@
   
 
  
+  .hide {
+    display: none;
+  }
+  
+  .unset-height {
+    height: unset;
+  }
