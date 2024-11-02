@@ -9,7 +9,7 @@
     --primary-green: rgba(0, 255, 34, 0.6);
     --button-color: rgba(40, 44, 38, 1);
     --correct-color: rgba(0, 255, 34, 1);
-    --user-answer-color: rgba(255, 230, 0, 0.8);
+    --user-answer-color: rgba(255, 0, 0, 0.644);
     --black-radial-gradient: radial-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 1));
   
 
@@ -44,4 +44,8 @@
   
   .unset-height {
     height: unset;
+  }
+
+  .correct{
+    color:rgba(0, 199, 0, 1)
   }
