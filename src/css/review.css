@@ -5,11 +5,8 @@
 }
 .review__question {
   border-bottom: 1px solid;
+  margin-bottom: 6px;
 }
 .review__correct-answer {
-  color: var(--correct-color);
-}
-
-.review__user-answer {
-  color: var(--user-answer-color);
+  color: var(--highligh-color);
 }

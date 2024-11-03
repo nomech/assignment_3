@@ -23,7 +23,6 @@ const startQuiz = () => {
   const quizIntro = document.querySelector(".quiz__intro");
   quizIntro.classList.toggle("hide");
   questionForm.classList.toggle("hide");
-
 };
 
 //  Function to create the question element
@@ -252,8 +251,7 @@ const reviewQuiz = () => {
   review.classList = "review";
   resultsHeader.after(review);
 
-  questions.forEach((question) => {
-    console.log(question);
+  questions.forEach((question, index) => {
     const reviewBox = document.createElement("div");
     reviewBox.classList = "review__box";
     review.appendChild(reviewBox);
@@ -265,6 +263,13 @@ const reviewQuiz = () => {
 
     const userAnswer = document.createElement("p");
     userAnswer.classList = "review__user-answer";
+
+    if (questions[index].userAnswer === questions[index].correct) {
+      userAnswer.classList.add("correct");
+    } else {
+      userAnswer.classList.add("wrong");
+    }
+
     userAnswer.innerText = `You'r answer: ${
       question.answers[question.userAnswer]
     }`;
