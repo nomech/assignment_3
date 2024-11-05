@@ -1,11 +1,11 @@
 .review {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--large-size);
 }
 .review__question {
   border-bottom: 1px solid;
-  margin-bottom: 6px;
+  margin-bottom: --var(--x-small-size);
 }
 .review__correct-answer {
   color: var(--highligh-color);

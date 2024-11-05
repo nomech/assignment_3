@@ -18,6 +18,7 @@ const constructMessageElement = (message) => {
     connectText.lastElementChild.classList.contains("connect__text-line")
   ) {
     connectText.lastElementChild.classList.remove("connect__text-line");
+    connectText.lastElementChild.classList.add("connect__text");
   }
 
   //  Appending the message element to the connect text

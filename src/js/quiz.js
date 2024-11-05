@@ -171,14 +171,14 @@ const endQuiz = () => {
   resultsHeader.innerText = `Correct Answers: ${correctAnswers} | Wrong Answers: ${wrongAnswers}`;
   results.appendChild(resultsHeader);
 
-  if (correctAnswers > wrongAnswers) {
+  if (correctAnswers >= wrongAnswers) {
     const successIndex = Math.floor(Math.random() * successMessage.length);
 
     const resultsHeader = document.createElement("h2");
     resultsHeader.classList = "results__header";
     resultsHeader.innerText = successMessage[successIndex];
     results.appendChild(resultsHeader);
-  } else if (correctAnswers < wrongAnswers) {
+  } else if (correctAnswers <= wrongAnswers) {
     const failureIndex = Math.floor(Math.random() * failureMessage.length);
 
     const resultsHeader = document.createElement("h2");

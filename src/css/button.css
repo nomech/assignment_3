@@ -1,16 +1,16 @@
 .button {
     grid-column: span 2;
     justify-self: center;
-    margin-top: 28px;
-    padding: 1rem;
+    margin-top: var(--medium-size);
+    padding: var(--small-size);
     background-color: var(--button-color);
-    font-size: 24px;
+    font-size: var(--medium-size);
     font-weight: 800;
     color: rgb(119, 119, 119);
     border: 2px solid var(--button-border);
     outline: none;
     box-shadow: none;
-    border-radius: 4px;
+    border-radius: calc(var(--x-small-size) / 2);
     cursor: pointer;
   }
   
@@ -20,7 +20,7 @@
   }
   
   .button--next {
-    padding: 0.5rem 1rem;
+    padding: var(--x-small-size) var(--small-size);
     width: 200px;
     align-self: center;
   }

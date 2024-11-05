@@ -26,6 +26,12 @@
     --button-border: rgba(197, 197, 197, 1);
     --button-border: rgba(197, 197, 197, 1);
     --flash-mid-color: rgba(0, 199, 0, 1);
+
+    --x-small-size: 0.5rem;
+    --small-size: 1rem;
+    --medium-size: 1.5rem;
+    --large-size: 2rem;
+    --x-large-size: 3rem;
   }
   
   * {
