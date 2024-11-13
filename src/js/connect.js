@@ -40,7 +40,6 @@ const constructOpenChannel = () => {
   return openChannel;
 };
 
-
 //  Function to create a message element with a delay
 const messageTimeout = (message, time) => {
   //  Setting a timeout to construct the message element

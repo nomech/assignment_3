@@ -136,7 +136,6 @@ const submitAnswer = (event) => {
     wrongAnswers++;
   }
 
-  console.log(correctAnswers, wrongAnswers);
   //  Incrementing the current question
   currentQuestion++;
 
