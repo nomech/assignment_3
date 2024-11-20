@@ -6,19 +6,19 @@
   :root {
     --primary-color-black: rgba(0, 0, 0, 1);
     --primary-quiz-bg: rgba(40, 44, 38, 1);
-    --primary-green: rgba(0, 255, 34, 0.6);
+    --primary-green:rgba(0, 255, 34, 1);
     --button-color: rgba(40, 44, 38, 1);
-    --correct-color: rgba(0, 255, 34, 1);
-    --user-answer-color: rgba(255, 0, 0, 0.644);
+    --highligh-color: rgba(255, 230, 0, 0.8);
     --black-radial-gradient: radial-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 1));
   
-
     --secondary-color-white: rgba(255, 255, 255, 1);
     --secondary-color-silver: rgba(119, 119, 119, 1);
     --button-hover: rgba(60, 66, 57, 1);
     --button-text: rgba(197, 197, 197, 1);
     --connect-bg-color: rgba(10, 12, 9, 1);
     --connect-text-color: rgba(0, 255, 34, 0.404);
+    --correct-color: rgba(0, 255, 34, 0.6);
+    --incorrect-color: rgba(255, 0, 0, 1);
 
     --accent-color-bronze: rgba(184, 115, 51, 1);
     --accent-color-green: rgba(0, 150, 57, 1);
@@ -26,6 +26,12 @@
     --button-border: rgba(197, 197, 197, 1);
     --button-border: rgba(197, 197, 197, 1);
     --flash-mid-color: rgba(0, 199, 0, 1);
+
+    --x-small-size: 0.5rem;
+    --small-size: 1rem;
+    --medium-size: 1.5rem;
+    --large-size: 2rem;
+    --x-large-size: 3rem;
   }
   
   * {
@@ -47,5 +53,9 @@
   }
 
   .correct{
-    color:rgba(0, 199, 0, 1)
+    color: var(--correct-color);
+  }
+
+  .wrong{
+    color: var(--incorrect-color);
   }

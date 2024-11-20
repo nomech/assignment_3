@@ -25,7 +25,7 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px;
+  padding: var(--small-size);
   background: var(--primary-color-black);
 }
 
@@ -40,32 +40,36 @@ body::before {
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 48px;
+  height: vaar(-x-large-size);
   align-items: center;
 }
 
 .quiz {
   display: flex;
   background-color: var(--primary-quiz-bg);
-  width: 800px;
-  margin: 32px;
-  padding: 36px;
-  border-radius: 18px;
+  margin: var(--large-size);
+  padding: var(--large-size);
+  border-radius: var(--small-size);
   border: 4px solid var(--accent-color-bronze);
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: var(--medium-size);
 }
 
 .quiz__intro {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 36px;
+  gap: var(--large-size);
 }
+
+.quiz__question-box{
+display: flex;
+justify-content: center;
+} 
 
 .quiz__question {
   text-decoration: 2px underline;
@@ -74,8 +78,8 @@ body::before {
 .quiz__form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  font-size: 22px;
+  gap: var(--x-small-size);
+  font-size: var(--medium-size);
 }
 
 .quiz__input {
@@ -83,13 +87,13 @@ body::before {
 }
 .quiz__label {
   cursor: pointer;
-  padding: 12px;
-  border-radius: 8px;
-  border: 2px solid #282c26;
+  padding: var(--small-size);
+  border-radius: var(--x-small-size);
+
 }
 
 .quiz__label:hover,
 .quiz__input:checked + .quiz__label {
-  background-color: #3c4239;
-  border: 2px solid #3c4239;
+  background-color: var(--button-hover);
+
 }

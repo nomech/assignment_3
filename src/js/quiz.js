@@ -23,7 +23,6 @@ const startQuiz = () => {
   const quizIntro = document.querySelector(".quiz__intro");
   quizIntro.classList.toggle("hide");
   questionForm.classList.toggle("hide");
-
 };
 
 //  Function to create the question element
@@ -137,7 +136,6 @@ const submitAnswer = (event) => {
     wrongAnswers++;
   }
 
-  console.log(correctAnswers, wrongAnswers);
   //  Incrementing the current question
   currentQuestion++;
 
@@ -172,14 +170,14 @@ const endQuiz = () => {
   resultsHeader.innerText = `Correct Answers: ${correctAnswers} | Wrong Answers: ${wrongAnswers}`;
   results.appendChild(resultsHeader);
 
-  if (correctAnswers > wrongAnswers) {
+  if (correctAnswers >= wrongAnswers) {
     const successIndex = Math.floor(Math.random() * successMessage.length);
 
     const resultsHeader = document.createElement("h2");
     resultsHeader.classList = "results__header";
     resultsHeader.innerText = successMessage[successIndex];
     results.appendChild(resultsHeader);
-  } else if (correctAnswers < wrongAnswers) {
+  } else if (correctAnswers <= wrongAnswers) {
     const failureIndex = Math.floor(Math.random() * failureMessage.length);
 
     const resultsHeader = document.createElement("h2");
@@ -252,8 +250,7 @@ const reviewQuiz = () => {
   review.classList = "review";
   resultsHeader.after(review);
 
-  questions.forEach((question) => {
-    console.log(question);
+  questions.forEach((question, index) => {
     const reviewBox = document.createElement("div");
     reviewBox.classList = "review__box";
     review.appendChild(reviewBox);
@@ -266,16 +263,12 @@ const reviewQuiz = () => {
     const userAnswer = document.createElement("p");
     userAnswer.classList = "review__user-answer";
 
-    console.log(question.userAnswer === question.correct);
-    console.log(question.userAnswer, question.correct);
-    console.log("hello");
-
-    if (question.userAnswer === question.correct) {
+    if (questions[index].userAnswer === questions[index].correct) {
       userAnswer.classList.add("correct");
+    } else {
+      userAnswer.classList.add("wrong");
     }
 
-
-    
     userAnswer.innerText = `You'r answer: ${
       question.answers[question.userAnswer]
     }`;

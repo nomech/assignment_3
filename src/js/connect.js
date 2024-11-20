@@ -18,6 +18,7 @@ const constructMessageElement = (message) => {
     connectText.lastElementChild.classList.contains("connect__text-line")
   ) {
     connectText.lastElementChild.classList.remove("connect__text-line");
+    connectText.lastElementChild.classList.add("connect__text");
   }
 
   //  Appending the message element to the connect text
@@ -38,7 +39,6 @@ const constructOpenChannel = () => {
   redirect();
   return openChannel;
 };
-
 
 //  Function to create a message element with a delay
 const messageTimeout = (message, time) => {
