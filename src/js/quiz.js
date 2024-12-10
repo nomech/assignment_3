@@ -124,9 +124,6 @@ const submitAnswer = (event) => {
   //  Preventing the default behavior of the form
   event.preventDefault();
 
-  //  Updating the score tracker
-  updateScoreTracker();
-  
   //  Getting the selected answer
   const quizForm = document.querySelector(".quiz__form");
   const quizInput = document.querySelector(".quiz__input:checked");
@@ -169,6 +166,9 @@ const submitAnswer = (event) => {
       endQuiz();
     }
   }
+    //  Updating the score tracker
+    updateScoreTracker();
+    
 };
 
 //  Function to end the quiz
@@ -249,9 +249,10 @@ const resetQuiz = () => {
   createQuestionElement(currentQuestion);
 };
 
+//  Function to update the score tracker
+// Starts at 100% and decreases if answer is wrong
 const updateScoreTracker = () => {
   const score = 100 - (wrongAnswers / questions.length) * 100;
-
   scorePoints.innerText = `${score}%`;
 };
 
