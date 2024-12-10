@@ -126,7 +126,7 @@ body::before {
 @media (max-width: 425px) {
 
   .quiz-header__title {
-    font-size: 22px;
+    font-size: 18px;
   }
   .quiz-header__text,
   .quiz__question {
