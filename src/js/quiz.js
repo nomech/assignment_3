@@ -50,12 +50,10 @@ const createQuestionElement = (index) => {
       answer
     );
 
-    //  Appending the input field to the form
-    questionForm.appendChild(inputField);
     //  Creating the label element
     const label = createLabelElement("quiz__label", answer, answer);
     //  Appending the label to the form
-    questionForm.appendChild(label);
+    questionForm.append(inputField, label);
   });
 
   const buttonLabel =
@@ -74,7 +72,7 @@ const createQuestionElement = (index) => {
     submitAnswer
   );
   //  Appending the submit button to the form
-  questionForm.appendChild(submitButton);
+  questionForm.append(submitButton);
 };
 
 //  Function to create an input element
@@ -179,13 +177,12 @@ const endQuiz = () => {
   const quiz = document.querySelector(".quiz");
   const results = document.createElement("section");
   results.className = "results";
-  quiz.appendChild(results);
+  quiz.append(results);
 
   //  Displaying the results
   const resultsHeader = document.createElement("h2");
   resultsHeader.innerText = `Correct Answers: ${correctAnswers} | Wrong Answers: ${wrongAnswers}`;
   resultsHeader.classList.add("results__header");
-  results.appendChild(resultsHeader);
 
   const resultsMessage = document.createElement("h2");
   resultsMessage.classList.add("results__message");
@@ -193,16 +190,14 @@ const endQuiz = () => {
   if (correctAnswers > wrongAnswers) {
     const successIndex = Math.floor(Math.random() * successMessage.length);
     resultsMessage.innerText = successMessage[successIndex];
- 
   } else if (correctAnswers <= wrongAnswers) {
     const failureIndex = Math.floor(Math.random() * failureMessage.length);
     resultsMessage.innerText = failureMessage[failureIndex];
   }
 
-  results.append(resultsMessage);
   const buttonGroup = document.createElement("div");
   buttonGroup.classList = "results__button-group";
-  results.append(buttonGroup);
+  results.append(resultsHeader, resultsMessage, buttonGroup);
 
   //  Creating the reset button
   const resetButton = createButtonElement(
@@ -221,8 +216,7 @@ const endQuiz = () => {
     reviewQuiz
   );
 
-  buttonGroup.appendChild(resetButton);
-  buttonGroup.appendChild(reviewButton);
+  buttonGroup.append(resetButton, reviewButton);
 };
 
 //  Function to reset the quiz
@@ -272,12 +266,11 @@ const reviewQuiz = () => {
   questions.forEach((question, index) => {
     const reviewBox = document.createElement("div");
     reviewBox.classList = "review__box";
-    review.appendChild(reviewBox);
+    review.append(reviewBox);
 
     const questionElement = document.createElement("p");
     questionElement.classList = "review__question";
     questionElement.innerText = question.question;
-    reviewBox.appendChild(questionElement);
 
     const userAnswer = document.createElement("p");
     userAnswer.classList = "review__user-answer";
@@ -292,16 +285,17 @@ const reviewQuiz = () => {
       question.answers[question.userAnswer]
     }`;
 
-    reviewBox.appendChild(userAnswer);
-
     const correctAnswer = document.createElement("p");
     correctAnswer.classList = "review__correct-answer";
     correctAnswer.innerText = `Correct answer: ${
       question.answers[question.correct]
     }`;
-    reviewBox.appendChild(correctAnswer);
+    reviewBox.append(questionElement, userAnswer, correctAnswer);
   });
 
   const reviewButton = document.querySelector(".button--review");
   reviewButton.remove();
+  
+  const resultsMessage = document.querySelector(".results__message");
+  resultsMessage.remove("results__message");
 };
