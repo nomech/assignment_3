@@ -1,6 +1,6 @@
-# Apple iPhone 15 Pro Website
+# A Warhammer 40K quiz website
 
-
+A responsive website showcasing the a warhammer 40K quiz.
 
 ## Live Demo
 
@@ -11,7 +11,7 @@
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repo-blue)](https://github.com/nomech/assignment_3.git)
 
 ## Description
-
+This project is a quiz for the Warhammer 40k Universe. It includes a linear quiz, a progress and score tracker. The score will decrease when the player answers wrong. If the player is below the failure limit then the player is deemed a heretic. At the end of the quiz there is a review section and the option to reset the quiz. 
 
 
 ## Technologies Used
