@@ -40,6 +40,7 @@
     box-sizing: border-box;
     color: var(--primary-green);
     font-family: "terminus", Courier, monospace;
+    letter-spacing: 1px;
   }
   
 

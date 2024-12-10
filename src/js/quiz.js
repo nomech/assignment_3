@@ -10,6 +10,8 @@ const questionForm = document.querySelector(".quiz__form");
 const questionBox = document.querySelector(".quiz__question-box");
 const progress = document.querySelector(".quiz__progress");
 const quizMain = document.querySelector(".quiz-main");
+const quizStats = document.querySelector(".quiz__stats");
+const scorePoints = document.querySelector(".score__points");
 
 //  Event listener for the start button
 const startButton = document.querySelector(".button--start");
@@ -23,11 +25,14 @@ const startQuiz = () => {
   const quizIntro = document.querySelector(".quiz__intro");
   quizIntro.classList.toggle("hide");
   questionForm.classList.toggle("hide");
+  quizStats.classList.toggle("hide");
+  
 };
 
 //  Function to create the question element
 const createQuestionElement = (index) => {
-  //  Update progress tracker
+
+  //  Updating the progress tracker
   updateProgressTracker();
 
   //  Creating the question element
@@ -119,17 +124,25 @@ const submitAnswer = (event) => {
   //  Preventing the default behavior of the form
   event.preventDefault();
 
+  //  Updating the score tracker
+  updateScoreTracker();
+  
   //  Getting the selected answer
   const quizForm = document.querySelector(".quiz__form");
   const quizInput = document.querySelector(".quiz__input:checked");
   let selectedAnswer = null;
 
+  //  Checking if the quiz input exists
   if (quizInput) {
     selectedAnswer = parseInt(quizInput.value);
   }
 
+  //  Checking if the selected answer is not null
   if (selectedAnswer !== null) {
+    //  Getting the correct answer
     const correctAnswer = questions[currentQuestion].correct;
+    
+    //  Setting the user answer
     questions[currentQuestion].userAnswer = selectedAnswer;
 
     //  Checking if the selected answer is correct
@@ -227,13 +240,19 @@ const resetQuiz = () => {
   currentQuestion = 0;
   correctAnswers = 0;
   wrongAnswers = 0;
+  scorePoints.innerText = "100%";
   progress.classList.toggle("hide");
-  quizMain.classList.toggle("unset-height");
-
   questionBox.classList.toggle("hide");
+  quizMain.classList.remove("unset-height");
 
   //  Creating the first question
   createQuestionElement(currentQuestion);
+};
+
+const updateScoreTracker = () => {
+  const score = 100 - (wrongAnswers / questions.length) * 100;
+
+  scorePoints.innerText = `${score}%`;
 };
 
 //  Function to update the progress tracker

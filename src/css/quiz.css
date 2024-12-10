@@ -97,3 +97,8 @@ justify-content: center;
   background-color: var(--button-hover);
 
 }
+
+.quiz__score{
+  display: flex;
+  gap: var(--x-small-size);
+}

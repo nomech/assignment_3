@@ -24,3 +24,7 @@
     width: 200px;
     align-self: center;
   }
+
+  .button:active {
+    transform: scale(0.98);
+  }
