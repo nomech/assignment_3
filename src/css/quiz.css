@@ -126,7 +126,7 @@ body::before {
 @media (max-width: 425px) {
 
   .quiz-header__title {
-    font-size: var(--small-size);
+    font-size: 22px;
   }
   .quiz-header__text,
   .quiz__question {
@@ -135,7 +135,7 @@ body::before {
   .quiz__title,
   .quiz__question,
   .quiz__label {
-    font-size: 12px;
+    font-size: var(--small-size);
   }
 
   .quiz__label {
