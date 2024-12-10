@@ -26,12 +26,10 @@ const startQuiz = () => {
   quizIntro.classList.toggle("hide");
   questionForm.classList.toggle("hide");
   quizStats.classList.toggle("hide");
-  
 };
 
 //  Function to create the question element
 const createQuestionElement = (index) => {
-
   //  Updating the progress tracker
   updateProgressTracker();
 
@@ -138,7 +136,7 @@ const submitAnswer = (event) => {
   if (selectedAnswer !== null) {
     //  Getting the correct answer
     const correctAnswer = questions[currentQuestion].correct;
-    
+
     //  Setting the user answer
     questions[currentQuestion].userAnswer = selectedAnswer;
 
@@ -166,9 +164,8 @@ const submitAnswer = (event) => {
       endQuiz();
     }
   }
-    //  Updating the score tracker
-    updateScoreTracker();
-    
+  //  Updating the score tracker
+  updateScoreTracker();
 };
 
 //  Function to end the quiz
@@ -187,27 +184,25 @@ const endQuiz = () => {
   //  Displaying the results
   const resultsHeader = document.createElement("h2");
   resultsHeader.innerText = `Correct Answers: ${correctAnswers} | Wrong Answers: ${wrongAnswers}`;
+  resultsHeader.classList.add("results__header");
   results.appendChild(resultsHeader);
 
-  if (correctAnswers >= wrongAnswers) {
-    const successIndex = Math.floor(Math.random() * successMessage.length);
+  const resultsMessage = document.createElement("h2");
+  resultsMessage.classList.add("results__message");
 
-    const resultsHeader = document.createElement("h2");
-    resultsHeader.classList = "results__header";
-    resultsHeader.innerText = successMessage[successIndex];
-    results.appendChild(resultsHeader);
+  if (correctAnswers > wrongAnswers) {
+    const successIndex = Math.floor(Math.random() * successMessage.length);
+    resultsMessage.innerText = successMessage[successIndex];
+ 
   } else if (correctAnswers <= wrongAnswers) {
     const failureIndex = Math.floor(Math.random() * failureMessage.length);
-
-    const resultsHeader = document.createElement("h2");
-    resultsHeader.classList = "results__header";
-    resultsHeader.innerText = failureMessage[failureIndex];
-    results.appendChild(resultsHeader);
+    resultsMessage.innerText = failureMessage[failureIndex];
   }
 
+  results.append(resultsMessage);
   const buttonGroup = document.createElement("div");
   buttonGroup.classList = "results__button-group";
-  results.appendChild(buttonGroup);
+  results.append(buttonGroup);
 
   //  Creating the reset button
   const resetButton = createButtonElement(
@@ -253,7 +248,7 @@ const resetQuiz = () => {
 // Starts at 100% and decreases if answer is wrong
 const updateScoreTracker = () => {
   const score = 100 - (wrongAnswers / questions.length) * 100;
-  scorePoints.innerText = `${score}%`;
+  scorePoints.innerText = `${Math.round(score)}%`;
 };
 
 //  Function to update the progress tracker

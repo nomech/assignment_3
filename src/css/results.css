@@ -9,3 +9,9 @@
   display: flex;
   gap: calc(var(--medium-size) * 2);
 }
+
+@media (max-width: 768px) {
+  .results__header, .results__message {
+    font-size: var(--small-size);
+  }
+}

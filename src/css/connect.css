@@ -35,7 +35,7 @@
   flex-direction: column;
   color: var(--connect-text-color);
   font-size: var(--medium-size);
-  width: 900px;
+  width: 760px;
 }
 
 .connect__text-line {
@@ -55,5 +55,16 @@
   }
   100% {
     color: var(--connect-text-color);
+  }
+}
+
+@media (max-width: 576px) {
+  .connect__button {
+    width: 340px;
+    font-size: 18px;
+  }
+  .connect__text{
+    font-size: 14px;
+    width: 400px;
   }
 }
