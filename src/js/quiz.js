@@ -46,6 +46,7 @@ const createQuestionElement = (index) => {
       index,
       answer
     );
+
     //  Appending the input field to the form
     questionForm.appendChild(inputField);
     //  Creating the label element
@@ -120,35 +121,40 @@ const submitAnswer = (event) => {
 
   //  Getting the selected answer
   const quizForm = document.querySelector(".quiz__form");
-  const selectedAnswer = parseInt(
-    document.querySelector('input[name="answer"]:checked').value
-  );
+  const quizInput = document.querySelector(".quiz__input:checked");
+  let selectedAnswer = null;
 
-  const correctAnswer = questions[currentQuestion].correct;
-  questions[currentQuestion].userAnswer = selectedAnswer;
-
-  //  Checking if the selected answer is correct
-  if (selectedAnswer === correctAnswer) {
-    //  Incrementing the correct answers
-    correctAnswers++;
-  } else {
-    //  Incrementing the wrong answers
-    wrongAnswers++;
+  if (quizInput) {
+    selectedAnswer = parseInt(quizInput.value);
   }
 
-  //  Incrementing the current question
-  currentQuestion++;
+  if (selectedAnswer !== null) {
+    const correctAnswer = questions[currentQuestion].correct;
+    questions[currentQuestion].userAnswer = selectedAnswer;
 
-  //  Clearing the question box and the form
-  clearElement(quizForm);
+    //  Checking if the selected answer is correct
+    if (selectedAnswer === correctAnswer) {
+      //  Incrementing the correct answers
+      correctAnswers++;
+    } else {
+      //  Incrementing the wrong answers
+      wrongAnswers++;
+    }
 
-  //  Checking if there are more questions
-  if (currentQuestion < questions.length) {
-    //  Creating the next question
-    createQuestionElement(currentQuestion);
-  } else {
-    //  Ending the quiz
-    endQuiz();
+    //  Incrementing the current question
+    currentQuestion++;
+
+    //  Clearing the question box and the form
+    clearElement(quizForm);
+
+    //  Checking if there are more questions
+    if (currentQuestion < questions.length) {
+      //  Creating the next question
+      createQuestionElement(currentQuestion);
+    } else {
+      //  Ending the quiz
+      endQuiz();
+    }
   }
 };
 
@@ -209,8 +215,6 @@ const endQuiz = () => {
 
   buttonGroup.appendChild(resetButton);
   buttonGroup.appendChild(reviewButton);
-
-  //  Setting the quiz as over
 };
 
 //  Function to reset the quiz
