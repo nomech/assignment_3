@@ -42,13 +42,7 @@ const createQuestionElement = (index) => {
 
   //  Looping through the answers array to create the answer elements
   answers.forEach((answer, index) => {
-    const inputField = createInputElement(
-      "quiz__input",
-      "radio",
-      "answer",
-      index,
-      answer
-    );
+    const inputField = createInputElement("quiz__input", "radio", "answer", index, answer);
 
     //  Creating the label element
     const label = createLabelElement("quiz__label", answer, answer);
@@ -56,21 +50,13 @@ const createQuestionElement = (index) => {
     questionForm.append(inputField, label);
   });
 
-  const buttonLabel =
-    currentQuestion === questions.length - 1 ? "Submit" : "Next";
-  const buttonClass =
-    currentQuestion === questions.length - 1
-      ? "button button--submit"
-      : "button button--next";
+  //  Creating the submit button and setting the label and class
+  const buttonLabel = currentQuestion === questions.length - 1 ? "Submit" : "Next";
+  const buttonClass = currentQuestion === questions.length - 1 ? "button button--submit" : "button button--next";
 
   //  Creating the submit button
-  const submitButton = createButtonElement(
-    buttonClass,
-    "button",
-    buttonLabel,
-    "click",
-    submitAnswer
-  );
+  const submitButton = createButtonElement(buttonClass, "button", buttonLabel, "click", submitAnswer);
+
   //  Appending the submit button to the form
   questionForm.append(submitButton);
 };
@@ -108,7 +94,7 @@ const createButtonElement = (className, type, text, listner, event) => {
   return button;
 };
 
-//  Function to clear an element
+//  Function to clears an element of its children
 const clearElement = (element) => {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
@@ -184,9 +170,11 @@ const endQuiz = () => {
   resultsHeader.innerText = `Correct Answers: ${correctAnswers} | Wrong Answers: ${wrongAnswers}`;
   resultsHeader.classList.add("results__header");
 
+  //  Creating the results message
   const resultsMessage = document.createElement("h2");
   resultsMessage.classList.add("results__message");
 
+  //  Displaying the results message based on the score
   if (correctAnswers > wrongAnswers) {
     const successIndex = Math.floor(Math.random() * successMessage.length);
     resultsMessage.innerText = successMessage[successIndex];
@@ -195,27 +183,16 @@ const endQuiz = () => {
     resultsMessage.innerText = failureMessage[failureIndex];
   }
 
+  //  Creating the button group
   const buttonGroup = document.createElement("div");
   buttonGroup.classList = "results__button-group";
   results.append(resultsHeader, resultsMessage, buttonGroup);
 
-  //  Creating the reset button
-  const resetButton = createButtonElement(
-    "button button--reset",
-    "button",
-    "Reset Assessment",
-    "click",
-    () => resetQuiz(".results")
-  );
+  //  Creating the reset button and review button
+  const resetButton = createButtonElement("button button--reset", "button", "Reset Assessment", "click", () => resetQuiz(".results"));
+  const reviewButton = createButtonElement("button button--review", "button", "Review Assessment", "click", reviewQuiz); 
 
-  const reviewButton = createButtonElement(
-    "button button--review",
-    "button",
-    "Review Assessment",
-    "click",
-    reviewQuiz
-  );
-
+  //  Appending the buttons to the button group
   buttonGroup.append(resetButton, reviewButton);
 };
 
@@ -251,6 +228,7 @@ const updateProgressTracker = () => {
   progress.innerText = `Question: ${currentQuestion + 1} / ${questions.length}`;
 };
 
+//  Function to review the quiz
 const reviewQuiz = () => {
   quizMain.classList.toggle("unset-height");
 
@@ -263,39 +241,43 @@ const reviewQuiz = () => {
   review.classList = "review";
   resultsHeader.after(review);
 
+  //  Looping through the questions array to create the review elements
   questions.forEach((question, index) => {
     const reviewBox = document.createElement("div");
     reviewBox.classList = "review__box";
     review.append(reviewBox);
 
+    //  Creating the question element
     const questionElement = document.createElement("p");
     questionElement.classList = "review__question";
     questionElement.innerText = question.question;
 
+    //  Creating the user answer element
     const userAnswer = document.createElement("p");
     userAnswer.classList = "review__user-answer";
 
+    //  Checking if the user answer is correct or wrong and setting the class 
     if (questions[index].userAnswer === questions[index].correct) {
       userAnswer.classList.add("correct");
     } else {
       userAnswer.classList.add("wrong");
     }
 
-    userAnswer.innerText = `You'r answer: ${
-      question.answers[question.userAnswer]
-    }`;
+    //  Setting the user answer and the correct answer
+    userAnswer.innerText = `You'r answer: ${question.answers[question.userAnswer]}`;
 
+    //  Creating the correct answer element
     const correctAnswer = document.createElement("p");
     correctAnswer.classList = "review__correct-answer";
-    correctAnswer.innerText = `Correct answer: ${
-      question.answers[question.correct]
-    }`;
+    correctAnswer.innerText = `Correct answer: ${question.answers[question.correct]}`;
     reviewBox.append(questionElement, userAnswer, correctAnswer);
   });
 
+  //  Removing the review button
   const reviewButton = document.querySelector(".button--review");
   reviewButton.remove();
   
+  //  Creating the reset button
   const resultsMessage = document.querySelector(".results__message");
   resultsMessage.remove("results__message");
 };

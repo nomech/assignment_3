@@ -1,6 +1,15 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 10 version
+*/
+
 .button {
+  -ms-grid-column-span: 2;
   grid-column: span 2;
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
   margin-top: var(--medium-size);
   padding: var(--small-size);
   background-color: var(--button-color);
@@ -9,7 +18,8 @@
   color: rgb(119, 119, 119);
   border: 2px solid var(--button-border);
   outline: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-radius: calc(var(--x-small-size) / 2);
   cursor: pointer;
 }
@@ -22,11 +32,15 @@
 .button--next {
   padding: var(--x-small-size) var(--small-size);
   width: 200px;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .button:active {
-  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+      -ms-transform: scale(0.98);
+          transform: scale(0.98);
 }
 
 @media (max-width: 768px) {
